@@ -15,6 +15,9 @@ l10n:
     en:
       code: en
       label: English
+    pl:
+      code: pl
+      label: Polish
 kramdown:
   input: GFM
   hard_wrap: false
@@ -328,3 +331,23 @@ t:
     edit-this-page: "Edit This Page"
     created-maintaned-by: "Created and maintained by"
     and-the: "and the"
+  pl:
+    language: "J&#x0119;zyk"
+    toggle-navigation: "Prze&#x0142;&#261;cz nawigacj&#x0119;"
+    blog: "Blog"
+    docs: "Podr&#x0119;cznik U&#x017C;ytkownika"
+    support: "Wsparcie"
+    community: "Spo&#322;eczno&#347;&#263;"
+    contribute: "Kontrybucja"
+    documentation: "Dokumentacja"
+    slim-version: "Wersja Slim'a"
+    search: "Wyszukaj"
+    search-in-doc: "Sprawd&#378; w dokumentach"
+    search-submit: "Wy&#347;lij zapytanie"
+    search-clear: "Wyczy&#347;&#263; zapytanie ."
+    search-reset: "Resetuj"
+    professional-support: "Profesjonalne wsparcie"
+    professional-support-from: "Profesjonalne wsparcie od"
+    edit-this-page: "Edytuj t&#x0119; stron&#x0119;"
+    created-maintaned-by: "Stworzone i utrzymywane przez "
+    and-the: "oraz"
