@@ -108,6 +108,25 @@ defaults:
     values:
       layout: docs-v4
 
+  - scope:
+      path: "pl"
+      type: "pages"
+    values:
+      l10n-lang: pl
+      docs-v4:
+        - title: Zaczynamy
+          items:
+            - [/pl/docs/v4, Rozpocz&#281;cie]
+            - [/pl/docs/v4/start/installation.md, Instalacja]
+
+  -
+    scope:
+      path: "pl/docs/v4"
+      type: "pages"
+    values:
+      layout: docs-v4
+      l10n-lang: pl
+
   -
     scope:
       path: ""
