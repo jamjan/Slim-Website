@@ -10,7 +10,7 @@
                 <div class="dropdown">
                     <a class="dropdown-toggle" id="l10nMenuButton" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display:block;margin-top:17px;margin-right:20px;">
                         <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                        <span class="text">{% if site.t['language'][currentLanguageCode] != nil %}{{ site.t['language'][currentLanguageCode] }}{% elsif site.t['language'][site.l10n.default] != nil %}{{ site.t['language'][site.l10n.default] }}{% else %}Language{% endif %}</span>
+                        <span class="text">{% if site.t[l10nCurrentPageLanguageCode]['language'] != nil %}{{ site.t[l10nCurrentPageLanguageCode]['language'] }}{% elsif site.t[l10nDefaultLanguageCode]['language'] != nil %}{{ site.t[l10nDefaultLanguageCode]['language']}}{% else %}Language{% endif %}</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown" aria-labelledby="l10nMenuButton">
@@ -24,8 +24,10 @@
 
             {% if l10nSelectorLanguageByPage == l10nCurrentPageLanguageCode %}
                         <li class="dropdown-item active">
-                            <img src="{{ site.base-url }}/assets/images/flags/{{ l10nCurrentPageLanguageCode }}.png" alt="{{ l10nCurrentPageLanguageCode }}" />
-                            <span>{{ site.l10n.languages[l10nCurrentPageLanguageCode].label }}</span>
+                            <a href="#" onlick="javascript: return false;">
+                                <img src="{{ site.base-url }}/assets/images/flags/{{ l10nCurrentPageLanguageCode }}.png" alt="{{ l10nCurrentPageLanguageCode }}" />
+                                <span>{{ site.l10n.languages[l10nCurrentPageLanguageCode].label }}</span>
+                            </a>
                         </li>
             {% else %}
                         <li class="dropdown-item">
