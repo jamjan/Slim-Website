@@ -1,20 +1,21 @@
 ---
-title: Dokumentacja Slim 4
-l10n-link: index-v4
-l10n-language: pl
+title: Dokumentacja Slim 3
+l10n-link: index-v3
+l10n-lang: pl
 ---
 
 <div class="alert alert-info">
     <p>
-        To jest dokumentacja dla <strong>Slim 4</strong>. Poszukujesz wersji dla <a href="/pl/docs/v3">Slim 3</a>?.
+        To jest dokumentacja dla <strong>Slim 3</strong>. Poszukujesz wersji dla <a href="/docs/v2">Slim 2</a>?.
     </p>
 </div>
 
 ## Witaj
 
-Slim to microframework PHP, kt&#243;ry szybko pomaga pisa&#263; nieskomplikowane, ale pot&#281;&#380;ne aplikacje internetowe oraz interfejsy API. U podstaw Slim
-posiada dyspozytor (dispatcher), kt&#243;ry odbiera &#380;&#261;danie HTTP, tworzy odpowiednie wywo&#322;anie zwrotne
-i zwraca odpowied&#378; HTTP. To wszystko!
+Slim to microframework PHP, kt&#243;ry syzbko pomaga
+pisa&#263; proste, ale pot&#281;&#380;ne aplikacje internetowe oraz interfejsy API. U podstaw Slim
+posiada dyspozytor, kt&#243;ry odbiera &#380;&#261;danie HTTP, wywo&#322;uje odpowiednie wywo&#322;anie zwrotne
+procedura i zwraca odpowied&#378; HTTP. To wszystko!
 
 ## Jaki jest sens?
 
@@ -24,10 +25,10 @@ aplikacji z interfejsami u&#380;ytkownika. Co wa&#380;niejsze, Slim jest super s
 i ma bardzo ma&#322;o kodu. W rzeczywisto&#347;ci mo&#380;esz odczyta&#263; i zrozumie&#263; jego kod &#378;r&#243;d&#322;owy
 w jedno popo&#322;udnie!
 
-> U podstaw Slim jest dyspozytor (dispatcher), kt&#243;ry odbiera &#380;&#261;danie HTTP,
+> U podstaw Slim jest dyspozytor, kt&#243;ry odbiera &#380;&#261;danie HTTP,
 >wywo&#322;uje odpowiednie wywo&#322;anie zwrotne i zwraca odpowied&#378; HTTP. To wszystko!
 
-Nie zawsze potrzebujesz kombajnu, takiego jak [Symfony][symfony] czy [Laravel][laravel].
+Nie zawsze potrzebujesz kombajnu, takiego jak [Symfony][symfony] lub [Laravel][laravel].
 Na pewno s&#261; to &#347;wietne narz&#281;dzia. Ale cz&#281;sto s&#261; przesadzone.
 Slim zapewnia tylko minimalny zestaw narz&#281;dzi, kt&#243;re wykona to, 
 czego potrzebujesz i nic wi&#281;cej.
@@ -35,7 +36,7 @@ czego potrzebujesz i nic wi&#281;cej.
 ## Jak to dzia&#322;a?
 
 Po pierwsze, potrzebujesz serwera WWW takiego jak Nginx lub Apache.
-Powiniene&#347;/powinna&#347; [skonfigurowa&#263; sw&#243;j serwer WWW](/docs/v4/start/web-servers.html), aby wysy&#322;a&#322; wszystkie
+Powiniene&#347;/powinna&#347; [skonfigurowa&#263; sw&#243;j serwer WWW](/docs/v3/start/web-servers.html), aby wysy&#322;a&#322; wszystkie
 odpowiednie &#380;&#261;dania do jednego pliku PHP „front-controller”.
 Tworzysz instancj&#281; i uruchamiasz aplikacj&#281; Slim w tym pliku PHP.
 
@@ -47,59 +48,31 @@ Na koniec uruchom aplikacj&#281; Slim. To takie proste. Oto przyk&#322;adowa apl
 <figure markdown="1">
 ```php
 <?php
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Factory\AppFactory;
+// Create and configure Slim app
+$config = ['settings' => [
+    'addContentLengthHeader' => false,
+]];
+$app = new \Slim\App($config);
 
-require __DIR__ . '/../vendor/autoload.php';
-
-/**
- * Wywołaj Aplikacje
- * 
- * Aby fabryka ruszyła powinienes/powinnas zainstalowa¢ wspierana 
- * implementacje PSR-7 swojego wyboru np. Slim PSR-7 oraz wspierany
- * kreator ServerRequest (zawarty w pakiecie Slim PSR-7)
- */
-$app = AppFactory::create();
-
-// Dodaj Middleware dla Routingu
-$app->addRoutingMiddleware();
-
-/*
- * Add Error Handling Middleware
- * 
- * @param bool $displayErrorDetails -> W środowisku produkcyjnym powinno by¢
- * ustawione jako false
- * @param bool $logErrors -> Parameter is passed to the default ErrorHandler
- * @param bool $logErrorDetails -> Wyßwietl szczegøły błedu w logu błedøw aplikacji,
- * ktøry mo«e by¢ zastæpiony przez wybrane przez Ciebie wywołanie.
- *  
- * Note: Natepujæcy middleware powinien by¢ dodany jako ostatni. Nie obsłu«y 
- * błedøw/wyjætkøw dla middleware dodanego po poniższym.
- */
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-
-// Zdefiniuj ścieżki HTTP
-$app->get('/hello/{name}', function (Request $request, Response $response, $args) {
-    $name = $args['name'];
-    $response->getBody()->write("Hello, $name");
-    return $response;
+// Define app routes
+$app->get('/hello/{name}', function ($request, $response, $args) {
+    return $response->write("Hello " . $args['name']);
 });
 
-// Wystartuj aplikację
+// Run app
 $app->run();
 ```
-<figcaption>Przyk&#322;ad 1: Przyk&#322;ad aplikacji Slim</figcaption>
+<figcaption>Rysunek 1: Przyk&#322;ad aplikachi Slim</figcaption>
 </figure>
 
-## &#379;&#261;danie i odpowied&#378;
+## &#380;&#261;danie i odpowied&#378;
 
 Podczas tworzenia aplikacji Slim cz&#281;sto pracujesz bezpo&#347;rednio z Request (&#380;&#261;danie)
 i Response (odpowied&#378;). Te obiekty reprezentuj&#261; rzeczywiste otrzymane &#380;&#261;danie HTTP
 przez serwer WWW i ewentualn&#261; odpowied&#378; HTTP zwr&#243;con&#261; do klienta.
 
 Ka&#380;da trasa aplikacji (route) Slim otrzymuje jako argument bie&#380;&#261;ce obiekty Request i Response
-do jego procedury zwrotnej. Obiekty te implementuj&#261; popularne interfejsy [PSR-7](/docs/v4/concept/value-objects.html).
+do jego procedury zwrotnej. Obiekty te implementuj&#261; popularne interfejsy [PSR-7](/docs/v3/concept/value-objects.html).
 Trasa aplikacji Slim mo&#380;e sprawdzi&#263; lub w razie potrzeby manipulowa¢ tymi obiektami.
 Ostatecznie ka&#380;da trasa aplikacji Slim **MUSI** zwr&#243;ci&#263; obiekt odpowiedzi PSR-7.
 
@@ -112,7 +85,7 @@ lub [Slim-Flash][flash], kt&#243;re bazuj&#261; na domy&#347;lnej funkcjonalno&#
 
 ## Jak czyta&#263; dokumentacj&#281;
 
-Je&#347;li dopiero zaczynasz korzysta&#263; ze Slim'a to zalecamy przeczytanie tej dokumentacji od samego pocz&#261;tku
+Je&#347;li dopiero zaczynasz korzysta&#263; ze Slim'a, zalecamy przeczytanie tej dokumentacji od samego pocz&#261;tku
 do ko&#324;ca. Je&#347;li znasz ju&#380; Slim, mo&#380;esz zamiast tego przej&#347;&#263; prosto
 do odpowiedniej sekcji.
 

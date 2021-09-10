@@ -118,7 +118,28 @@ defaults:
           items:
             - [/pl/docs/v4, Rozpocz&#281;cie]
             - [/pl/docs/v4/start/installation.md, Instalacja]
-
+            - [/pl/docs/v4/start/upgrade.md, Aktualizacja]
+            - [/pl/docs/v4/start/web-servers.md, Serwer WWW]
+            - [/pl/docs/v4/deployment/deployment.md, Deployment]
+        - title: Koncepty
+          items:
+            - [/pl/docs/v4/concepts/life-cycle.md, Application Life Cycle]
+            - [/pl/docs/v4/concepts/value-objects.md, PSR-7]
+            - [/pl/docs/v4/concepts/middleware.md, Middleware]
+            - [/pl/docs/v4/concepts/di.md, Dependency Container]
+        - title: Aplikacja
+          items:
+            - [/pl/docs/v4/objects/application.md, Overview]
+            - [/pl/docs/v4/objects/application.md#advanced-notices-and-warnings-handling, Notices & Warnings Handling]
+        - title: Cook book
+          items:
+            - [/pl/docs/v4/cookbook/route-patterns.md, Trailing / in routes]
+            - [/pl/docs/v4/cookbook/retrieving-current-route.md, Retrieving Current Route]
+            - [/pl/docs/v4/cookbook/enable-cors.md, Enabling CORS]
+            - [/pl/docs/v4/cookbook/uploading-files.md, Uploading Files using POST forms]
+        - title: Add Ons
+          items:
+            - [/pl/docs/v4/features/templates.md, Templates]
   -
     scope:
       path: "pl/docs/v4"
